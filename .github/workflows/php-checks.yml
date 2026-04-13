@@ -1,52 +1,48 @@
-name: PHP Checks   #Название workflow (видно на GitHub)
+name: PHP Checks
 
- 
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
-on: 
+jobs:
+  php-lint:
+    name: PHP Syntax Check
+    runs-on: ubuntu-latest
 
-  push: 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    branches: [ main, master ] 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
 
-  pull_request:   #Запускать при push и PR на main/master 
+      - name: Check PHP syntax
+        run: |
+          find . -name '*.php' -not -path './vendor/*' \
+            -exec php -l {} \; | grep -v 'No syntax errors'
+          if [ $? -eq 0 ]; then exit 1; fi
+          echo 'All PHP files passed syntax check!'
 
-    branches: [ main, master ] 
+  phpcs:
+    name: Code Style Check
+    runs-on: ubuntu-latest
 
- 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-jobs: 
+      - name: Setup PHP with PHPCS
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: phpcs
 
-  php-lint: 
-
-    name: PHP Syntax Check 
-
-    runs-on: ubuntu-latest   #Использовать виртуалку с Ubuntu 
-
- 
-
-    steps: 
-
-      - name: Checkout code 
-
-        uses: actions/checkout@v4   #Скачать код репозитория
-
- 
-
-      - name: Setup PHP 
-
-        uses: shivammathur/setup-php@v2  #Установить PHP нужной версии  
-
-        with: 
-
-          php-version: '8.1' 
-
- 
-
-      - name: Check PHP syntax 
-
-        run: | 
-
-          find . -name '*.php' -not -path './vendor/*' \   #Выполнить команду lint для всех .php файлов 
+      - name: Run PHPCS
+        run: phpcs -n
 
             -exec php -l {} \; | grep -v 'No syntax errors' 
 
