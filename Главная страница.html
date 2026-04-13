@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #020617;
+            --header-bg: rgba(2, 6, 23, 0.9);
+            --card: #0b1224;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --primary: #ec4899;
+            --accent: #22d3ee;
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top, #0f172a, #020617);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ТЕКСТ С КАРТИНКОЙ ВНУТРИ */
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background-image: url("https://i.pinimg.com/originals/6a/ea/59/6aea59802feb54977eab2eced2104b8f.jpg");
+            background-size: cover;
+            background-position: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            margin-left: 26px;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1000px;
+            margin: auto;
+            padding: 100px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+      
+        .text-bg {
+            display: inline-block;
+            padding: 30px 60px;
+            background-image: url("https://avatars.mds.yandex.net/i?id=0b10b2045a18f8f201d1c27e34d36a1ec82a71fa-5303693-images-thumbs&n=13");
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .text-bg span {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .hero p {
+            margin-top: 30px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            margin-top: 40px;
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: var(--radius);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: #020617;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(236,72,153,0.35);
+        }
+
+        /* CARDS */
+        .cards {
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, #0b1224, #020617);
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">Anime Shop</div>
+        <nav>
+            <a href="#">Главная </a>
+            <a href="#">Фигурки</a>
+            <a href="#">Одежда</a>
+            <a href="#">Манга</a>
+            <a href="C:\Users\denis\Desktop\сайт\Контакты.html">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1 class="text-bg">
+        <span>Аниме магазин</span>
+    </h1>
+
+    <p>
+        Фигурки, одежда и манга по популярным тайтлам.
+        Современный дизайн и качественная атрибутика.
+    </p>
+
+    <a href="C:\Users\denis\Desktop\сайт\Каталог товаров.html" class="btn">Перейти в каталог</a>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <h3>Фигурки</h3>
+        <p>Коллекционные фигурки из популярных аниме-серий.</p>
+    </div>
+    <div class="card">
+        <h3>Одежда</h3>
+        <p>Футболки и худи с авторскими принтами.</p>
+    </div>
+    <div class="card">
+        <h3>Манга</h3>
+        <p>Лицензионные издания и популярные серии.</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 AnimeShop. Все права защищены.
+</footer>
+
+</body>
+</html>
+

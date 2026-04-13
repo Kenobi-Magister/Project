@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты | Anime Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #020617;
+            --header-bg: rgba(2, 6, 23, 0.9);
+            --card: #0b1224;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --primary: #ec4899;
+            --accent: #22d3ee;
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top, #0f172a, #020617);
+            color: var(--text);
+        }
+
+        /* HEADER (как у тебя) */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background-image: url("https://i.pinimg.com/originals/6a/ea/59/6aea59802feb54977eab2eced2104b8f.jpg");
+            background-size: cover;
+            background-position: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            margin-left: 26px;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form {
+            background: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+        }
+
+        .form input,
+        .form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: var(--radius);
+            border: none;
+            background: #020617;
+            color: white;
+        }
+
+        .form button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: var(--radius);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: #020617;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .map {
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: none;
+        }
+
+        .socials {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .socials a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .socials a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo">Anime Shop</div>
+        <nav>
+            <a href="C:\Users\denis\Desktop\сайт\Главная страница.html">Главная</a>
+            <a href="#">Фигурки</a>
+            <a href="#">Одежда</a>
+            <a href="#">Манга</a>
+            <a href="#">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Свяжитесь с нами</h1>
+
+    <div class="grid">
+
+        <div class="form">
+            <input type="text" id="name" placeholder="Ваше имя">
+            <input type="email" id="email" placeholder="Email">
+            <textarea id="message" rows="5" placeholder="Сообщение"></textarea>
+            <button onclick="sendMessage()">Отправить</button>
+        </div>
+
+        <div class="map">
+            <iframe src="https://www.google.com/maps?q=Karaganda&output=embed"></iframe>
+        </div>
+
+    </div>
+
+    <div class="socials">
+        <h2>Мы в соцсетях</h2>
+        <br>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+    </div>
+</div>
+
+<script>
+function sendMessage() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (!name || !email || !message) {
+        alert("Заполните все поля!");
+        return;
+    }
+
+    alert("Сообщение отправлено! Спасибо, " + name);
+}
+</script>
+
+</body>
+</html>
